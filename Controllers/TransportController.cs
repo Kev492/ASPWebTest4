@@ -21,13 +21,22 @@ namespace AspWebTest2.Controllers
                 .FirstOrDefault(hub => hub.AllocatedArea == customerAddress.LocalAddress);
             var driverInfo = _context.DriverInformation
                 .FirstOrDefault(driver => driver.AffiliatedCompany == distributionHub.DistributionName);
+            
+            var cityName = customerAddress.LocalAddress.Substring(0, 2);
+            var firstDistributionHub = _context.DistributionHUB
+                .FirstOrDefault(hub => hub.AllocatedArea == cityName);
+            var firstDistributionDriverInfo = _context.DriverInformation
+                .FirstOrDefault(driver => driver.AffiliatedCompany == firstDistributionHub.DistributionName);
 
             var transportViewModel = new TransportViewModel
             {
                 Order = order,
                 CustomerAddress = customerAddress,
                 DistributionHub = distributionHub,
-                DriverInfo = driverInfo
+                DriverInfo = driverInfo,
+                CityName = cityName,
+                FirstDistributionHub = firstDistributionHub, 
+                FirstDistributionDriverInfo = firstDistributionDriverInfo
             };
 
             return View("/Views/Transport/Transport.cshtml", transportViewModel);

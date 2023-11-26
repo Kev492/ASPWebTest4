@@ -12,5 +12,8 @@ namespace AspWebTest2.Models
         public Address CustomerAddress { get; set; }
         public Hub DistributionHub { get; set; }
         public Driver DriverInfo { get; set; }
+        public string CityName { get; set; }
+        public Hub FirstDistributionHub { get; set; } 
+        public Driver FirstDistributionDriverInfo { get; set; }
     }
 }

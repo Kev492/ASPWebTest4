@@ -7,6 +7,16 @@
 
 <h2>@ViewData["Title"]</h2>
 
+<h3>1차 유통 정보</h3>
+<p>송장 번호: @(Model.Order.OrderID + 100000)</p>
+<p>지번 주소: @Model.CustomerAddress.LocalAddress</p>
+<p>유통사: @Model.FirstDistributionHub.DistributionName</p>
+<p>배송기사 성함: @Model.FirstDistributionDriverInfo.DriverName</p>
+<p>배송기사 전화번호: @Model.FirstDistributionDriverInfo.DriverPhone</p>
+
+<hr />
+
+<h3>2차 유통 정보</h3>
 <p>송장 번호: @(Model.Order.OrderID + 100000)</p>
 <p>지번 주소: @Model.CustomerAddress.LocalAddress</p>
 <p>상세 주소: @Model.CustomerAddress.DetailedAddress</p>

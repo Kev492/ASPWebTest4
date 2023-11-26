@@ -11,5 +11,6 @@ namespace AspWebTest2.Models
         public ORDERLIST Order { get; set; }
         public Address CustomerAddress { get; set; }
         public Hub DistributionHub { get; set; }
+        public Driver DriverInfo { get; set; }
     }
 }

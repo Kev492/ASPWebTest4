@@ -44,6 +44,11 @@
             <p>Total Amount: @(order.TotalAmount.ToString("N0")) 원 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <p>Order Date: @order.OrderDate</p>
 
+            <!-- 추가: Transport Information 버튼과 링크 -->
+            <a asp-controller="Transport" asp-action="Index" asp-route-orderId="@order.OrderID">
+                <button type="button">Transport Information</button>
+            </a>
+
             <table class="order-details-table">
                 <tr>
                     <th>Product ID</th>

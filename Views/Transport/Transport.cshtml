@@ -1,0 +1,16 @@
+@model AspWebTest2.Models.ORDERLIST
+
+@{
+    ViewData["Title"] = "Transport Information";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>Order ID: @Model</p>
+
+<!-- 임의의 TransportNumber 생성 -->
+@{
+    int transportNumber = Model.OrderID + 100000;
+}
+
+<p>Transport Number: @transportNumber</p>

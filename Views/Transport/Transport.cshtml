@@ -1,4 +1,5 @@
-@model AspWebTest2.Models.ORDERLIST
+<!-- Transport.cshtml -->
+@model AspWebTest2.Models.TransportViewModel
 
 @{
     ViewData["Title"] = "Transport Information";
@@ -6,11 +7,7 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<p>Order ID: @Model</p>
-
-<!-- 임의의 TransportNumber 생성 -->
-@{
-    int transportNumber = Model.OrderID + 100000;
-}
-
-<p>Transport Number: @transportNumber</p>
+<p>송장 번호: @(Model.Order.OrderID + 100000)</p>
+<p>지번 주소: @Model.CustomerAddress.LocalAddress</p>
+<p>상세 주소: @Model.CustomerAddress.DetailedAddress</p>
+<p>유통사: @Model.DistributionHub.DistributionName</p>

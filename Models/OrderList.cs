@@ -8,6 +8,7 @@ namespace AspWebTest2.Models
         public Customer Customer { get; set; }
         public int TotalAmount { get; set; }
         public DateTime OrderDate { get; set; }
+        public bool Refund { get; set; }
     }
 
     public class CartItem

@@ -73,7 +73,8 @@ namespace AspWebTest2.Controllers
                     OrderID = orderId,
                     CustomerID = customerId,
                     TotalAmount = totalAmount,
-                    OrderDate = DateTime.UtcNow
+                    OrderDate = DateTime.UtcNow,
+                    Refund = false
                 };
 
                 // Add the new order to the context
@@ -86,7 +87,7 @@ namespace AspWebTest2.Controllers
                 var cartList = HttpContext.Session.GetObject<List<CartItem>>("Cart");
                 if (cartList != null && cartList.Any())
                 {
-                    // HashSetÀ» »ç¿ëÇÏ¿© Áßº¹µÈ OrderDetail ¹æÁö
+                    // HashSetï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ßºï¿½ï¿½ï¿½ OrderDetail ï¿½ï¿½ï¿½ï¿½
                     var uniqueOrderDetails = new HashSet<OrderDetail>();
 
                     foreach (var cartItem in cartList)
@@ -98,7 +99,7 @@ namespace AspWebTest2.Controllers
                             Quantity = cartItem.Quantity,
                             SubTotal = cartItem.Quantity * cartItem.Price
                         };
-                        // Áßº¹À» ¹æÁöÇÏ±â À§ÇØ HashSet¿¡ Ãß°¡
+                        // ï¿½ßºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ HashSetï¿½ï¿½ ï¿½ß°ï¿½
                         uniqueOrderDetails.Add(orderDetail);
                         //_context.ORDERDETAILS.Add(orderDetail);
                     }

@@ -18,7 +18,10 @@
     <h3>Customer Details:</h3>
     <p>Customer ID: @Model.CustomerID</p>
     <p>Name: @Model.FirstName @Model.LastName</p>
+    <p>Email: @Model.Email</p>
 
     <!-- Add a link to navigate to the Products page -->
     <a asp-controller="Product" asp-action="Index" asp-route-customerId="@Model.CustomerID">상품 보기</a>
+    <!-- Add a link to navigate to the Inquiry page -->
+    <a asp-controller="Inquiry" asp-action="Index" asp-route-customerId="@Model.CustomerID">문의 내역</a>
 }

@@ -16,7 +16,7 @@ public class OrderController : Controller
     {
         // Retrieve order information from the database using only ORDERLIST table
         var customerOrders = _context.ORDERLIST
-            .Where(o => o.CustomerID == customerId)
+            .Where(o => o.CustomerID == customerId && o.Refund != true)
             .OrderByDescending(o => o.OrderDate)
             .ToList();
         

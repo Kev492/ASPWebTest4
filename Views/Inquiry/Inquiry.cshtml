@@ -1,0 +1,35 @@
+<!-- Views/Inquiry/Index.cshtml -->
+@model List<AspWebTest2.Models.Inquiry>
+
+@{
+    ViewData["Title"] = "문의 내역";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>Customer ID: @ViewBag.CustomerId</p>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table>
+        <tr>
+            <th>Inquiry Number</th>
+            <th>Inquiry Category</th>
+            <th>Inquiry Details</th>
+            <th>Inquiry Answers</th>
+        </tr>
+        @foreach (var inquiry in Model)
+        {
+            <tr>
+                <td>@inquiry.InquiryNumber</td>
+                <td>@inquiry.InquiryCategory</td>
+                <td>@inquiry.InquiryDetails</td>
+                <td>@inquiry.InquiryAnswers</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>문의 내역이 없습니다.</p>
+}

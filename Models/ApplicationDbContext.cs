@@ -16,6 +16,7 @@ namespace AspWebTest2.Models
         public DbSet<Address> CustomerAddress { get; set; }
         public DbSet<Hub> DistributionHUB { get; set; }
         public DbSet<Driver> DriverInformation { get; set; }
+        public DbSet<Inquiry> INQUIRY { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // 주 키 설정
@@ -25,6 +26,7 @@ namespace AspWebTest2.Models
             modelBuilder.Entity<Address>().HasKey(a => a.DetailedAddress);
             modelBuilder.Entity<Hub>().HasKey(h => h.DistributionName);
             modelBuilder.Entity<Driver>().HasKey(d => d.CargoDriverID);
+            modelBuilder.Entity<Inquiry>().HasKey(i => i.InquiryNumber);
 
             base.OnModelCreating(modelBuilder);
         }

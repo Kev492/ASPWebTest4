@@ -17,6 +17,8 @@ namespace AspWebTest2.Models
         public DbSet<Hub> DistributionHUB { get; set; }
         public DbSet<Driver> DriverInformation { get; set; }
         public DbSet<Inquiry> INQUIRY { get; set; }
+        public DbSet<FirstFreightShipping> FirstFreightShipping { get; set; }
+        public DbSet<SecondFreightShipping> SecondFreightShipping { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // 주 키 설정
@@ -27,6 +29,8 @@ namespace AspWebTest2.Models
             modelBuilder.Entity<Hub>().HasKey(h => h.DistributionName);
             modelBuilder.Entity<Driver>().HasKey(d => d.CargoDriverID);
             modelBuilder.Entity<Inquiry>().HasKey(i => i.InquiryNumber);
+            modelBuilder.Entity<FirstFreightShipping>().HasKey(ffs => ffs.TransportNumber);
+            modelBuilder.Entity<SecondFreightShipping>().HasKey(sfs => sfs.TransportNumber);
 
             base.OnModelCreating(modelBuilder);
         }

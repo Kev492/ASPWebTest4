@@ -17,10 +17,10 @@ namespace AspWebTest2.Controllers
             var order = _context.ORDERLIST.FirstOrDefault(o => o.OrderID == orderId);
 
             var customerAddress = _context.CustomerAddress.FirstOrDefault(a => a.CustomerID == order.CustomerID);
-            var distributionHub = _context.DistributionHUB
+            var SeconddistributionHub = _context.DistributionHUB
                 .FirstOrDefault(hub => hub.AllocatedArea == customerAddress.LocalAddress);
-            var driverInfo = _context.DriverInformation
-                .FirstOrDefault(driver => driver.AffiliatedCompany == distributionHub.DistributionName);
+            var seconddriverInfo = _context.DriverInformation
+                .FirstOrDefault(driver => driver.AffiliatedCompany == SeconddistributionHub.DistributionName);
             
             var cityName = customerAddress.LocalAddress.Substring(0, 2);
             var firstDistributionHub = _context.DistributionHUB
@@ -32,12 +32,39 @@ namespace AspWebTest2.Controllers
             {
                 Order = order,
                 CustomerAddress = customerAddress,
-                DistributionHub = distributionHub,
-                DriverInfo = driverInfo,
+                SecondDistributionHub = SeconddistributionHub,
+                SecondDriverInfo = seconddriverInfo,
                 CityName = cityName,
                 FirstDistributionHub = firstDistributionHub, 
                 FirstDistributionDriverInfo = firstDistributionDriverInfo
             };
+
+            // Add data to FirstFreightShipping table
+            var firstFreightShipping = new FirstFreightShipping
+            {
+                TransportNumber = transportViewModel.Order.OrderID + 100000,
+                CargoDriverID = transportViewModel.FirstDistributionDriverInfo.CargoDriverID,
+                LocalAddress = transportViewModel.CustomerAddress.LocalAddress,
+                OrderID = transportViewModel.Order.OrderID,
+                DistributionName = transportViewModel.FirstDistributionHub.DistributionName
+            };
+
+            _context.Add(firstFreightShipping);
+
+            // Add data to SecondFreightShipping table
+            var secondFreightShipping = new SecondFreightShipping
+            {
+                TransportNumber = transportViewModel.Order.OrderID + 100000,
+                CargoDriverID = transportViewModel.SecondDriverInfo.CargoDriverID,
+                LocalAddress = transportViewModel.CustomerAddress.LocalAddress,
+                DetailedAddress = transportViewModel.CustomerAddress.DetailedAddress,
+                OrderID = transportViewModel.Order.OrderID,
+                DistributionName = transportViewModel.SecondDistributionHub.DistributionName
+            };
+
+            _context.Add(secondFreightShipping);
+
+            _context.SaveChanges(); // Save changes to the database
 
             return View("/Views/Transport/Transport.cshtml", transportViewModel);
         }

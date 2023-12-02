@@ -24,6 +24,8 @@
     <a asp-controller="Product" asp-action="Index" asp-route-customerId="@Model.CustomerID">상품 보기</a>
     <!-- Add a link to navigate to the Inquiry page -->
     <a asp-controller="Inquiry" asp-action="Index" asp-route-customerId="@Model.CustomerID" class="link-spacing">문의 내역</a>
+    <!-- Add a link to navigate to the Membership page -->
+    <a asp-controller="Membership" asp-action="Index" asp-route-customerId="@Model.CustomerID" class="link-spacing">와우 멤버십</a>
 }
 <style>
     .link-spacing {

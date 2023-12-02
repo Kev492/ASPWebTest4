@@ -21,6 +21,7 @@ namespace AspWebTest2.Models
         public DbSet<FirstFreightShipping> FirstFreightShipping { get; set; }
         public DbSet<SecondFreightShipping> SecondFreightShipping { get; set; }
         public DbSet<Review> REVIEW { get; set; }
+        public DbSet<Membership> MEMBERSHIP { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // 주 키 설정
@@ -35,6 +36,7 @@ namespace AspWebTest2.Models
             modelBuilder.Entity<FirstFreightShipping>().HasKey(ffs => ffs.TransportNumber);
             modelBuilder.Entity<SecondFreightShipping>().HasKey(sfs => sfs.TransportNumber);
             modelBuilder.Entity<Review>().HasKey(r => r.ReviewNumber);
+            modelBuilder.Entity<Membership>().HasKey(m => m.CustomerID);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -1,0 +1,50 @@
+<!-- Views/Membership/Index.cshtml -->
+@model AspWebTest2.Models.Membership
+
+@{
+    ViewData["Title"] = "와우 멤버십 정보";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>Customer ID: @ViewBag.CustomerId</p>
+
+@if (Model != null)
+{
+    <table class="membership-table">
+        <tr>
+            <th>Customer ID</th>
+            <th>Payment Account</th>
+            <th>Payment Date</th>
+            <!-- Add other membership-related columns as needed -->
+        </tr>
+        <tr>
+            <td>@Model.CustomerID</td>
+            <td>@Model.PaymentAccount</td>
+            <td>@Model.PaymentDate.ToString("yyyy-MM-dd")</td>
+            <!-- Display other membership-related data -->
+        </tr>
+    </table>
+}
+else
+{
+    <p>멤버십 정보가 없습니다.</p>
+}
+
+<style>
+    .membership-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px; /* Adjust margin as needed */
+    }
+
+    .membership-table th, .membership-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .membership-table th {
+        background-color: #f2f2f2;
+    }
+</style>

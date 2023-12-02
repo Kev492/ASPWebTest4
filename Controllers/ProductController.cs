@@ -101,7 +101,12 @@ namespace AspWebTest2.Controllers
                         };
                         // �ߺ��� �����ϱ� ���� HashSet�� �߰�
                         uniqueOrderDetails.Add(orderDetail);
-                        //_context.ORDERDETAILS.Add(orderDetail);
+                        
+                        var product = _context.PRODUCT.Find(cartItem.ProductID);
+                        if (product != null)
+                        {
+                            product.TotalStock -= cartItem.Quantity;
+                        }
                     }
                     // Add unique order details to the context
                     foreach (var uniqueOrderDetail in uniqueOrderDetails)

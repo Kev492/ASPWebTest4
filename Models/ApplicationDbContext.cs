@@ -14,6 +14,7 @@ namespace AspWebTest2.Models
         public DbSet<ORDERLIST> ORDERLIST { get; set; }
         public DbSet<OrderDetail> ORDERDETAILS { get; set; }
         public DbSet<Address> CustomerAddress { get; set; }
+        public DbSet<AddressInfo> AddressInformation { get; set; }
         public DbSet<Hub> DistributionHUB { get; set; }
         public DbSet<Driver> DriverInformation { get; set; }
         public DbSet<Inquiry> INQUIRY { get; set; }
@@ -27,6 +28,7 @@ namespace AspWebTest2.Models
             modelBuilder.Entity<OrderDetail>()
                 .HasKey(od => new { od.OrderID, od.ProductID });
             modelBuilder.Entity<Address>().HasKey(a => a.DetailedAddress);
+            modelBuilder.Entity<AddressInfo>().HasKey(ai => ai.LocalAddress);
             modelBuilder.Entity<Hub>().HasKey(h => h.DistributionName);
             modelBuilder.Entity<Driver>().HasKey(d => d.CargoDriverID);
             modelBuilder.Entity<Inquiry>().HasKey(i => i.InquiryNumber);

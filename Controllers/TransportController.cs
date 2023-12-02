@@ -17,6 +17,12 @@ namespace AspWebTest2.Controllers
             var order = _context.ORDERLIST.FirstOrDefault(o => o.OrderID == orderId);
 
             var customerAddress = _context.CustomerAddress.FirstOrDefault(a => a.CustomerID == order.CustomerID);
+            var addressInformation = _context.AddressInformation.FirstOrDefault(ai => ai.LocalAddress == customerAddress.LocalAddress);
+            var addressInfo = new AddressInfo
+            {
+                City = addressInformation?.City,
+                District = addressInformation?.District
+            };
             var SeconddistributionHub = _context.DistributionHUB
                 .FirstOrDefault(hub => hub.AllocatedArea == customerAddress.LocalAddress);
             var seconddriverInfo = _context.DriverInformation
@@ -32,6 +38,7 @@ namespace AspWebTest2.Controllers
             {
                 Order = order,
                 CustomerAddress = customerAddress,
+                AddressInfo = addressInfo,
                 SecondDistributionHub = SeconddistributionHub,
                 SecondDriverInfo = seconddriverInfo,
                 CityName = cityName,

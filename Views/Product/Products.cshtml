@@ -18,6 +18,7 @@
             <th>Price</th>
             <th>Quantity</th>
             <th>Action</th>
+            <th>View Reviews</th>
         </tr>
         @foreach (var product in Model.Item1)
         {
@@ -27,6 +28,7 @@
                 <td>@product.Price</td>
                 <td><input type="number" id="quantity_@product.ProductID" min="0" value="0" /></td>
                 <td><button onclick="addToTotal('@product.ProductID', @product.Price)">Add</button></td>
+                <td><a href="@Url.Action("Index", "Review", new { productId = product.ProductID })">View Reviews</a></td>
             </tr>
         }
     </table>

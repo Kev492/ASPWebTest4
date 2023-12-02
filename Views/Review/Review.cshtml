@@ -1,0 +1,51 @@
+@model List<AspWebTest2.Models.Review>
+
+@{
+    ViewData["Title"] = "Reviews Page";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="review-table">
+        <tr>
+            <th>Review Number</th>
+            <th>Customer ID</th>
+            <th>Review Date</th>
+            <th>Review Details</th>
+            <th>Review Ratings</th>
+        </tr>
+        @foreach (var review in Model)
+        {
+            <tr>
+                <td>@review.ReviewNumber</td>
+                <td>@review.CustomerID</td>
+                <td>@review.ReviewDate</td>
+                <td>@review.ReviewDetails</td>
+                <td>@review.ReviewRatings</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No reviews available for this product.</p>
+}
+<style>
+    .review-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px; /* Adjust margin as needed */
+    }
+
+    .review-table th, .review-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .review-table th {
+        background-color: #f2f2f2;
+    }
+</style>

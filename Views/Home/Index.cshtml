@@ -2,7 +2,7 @@
 @model AspWebTest2.Models.Customer
 
 @{
-    ViewData["Title"] = "데이터베이스 설계및활용";
+    ViewData["Title"] = "데이터베이스 설계및활용 3조";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -23,5 +23,10 @@
     <!-- Add a link to navigate to the Products page -->
     <a asp-controller="Product" asp-action="Index" asp-route-customerId="@Model.CustomerID">상품 보기</a>
     <!-- Add a link to navigate to the Inquiry page -->
-    <a asp-controller="Inquiry" asp-action="Index" asp-route-customerId="@Model.CustomerID">문의 내역</a>
+    <a asp-controller="Inquiry" asp-action="Index" asp-route-customerId="@Model.CustomerID" class="link-spacing">문의 내역</a>
 }
+<style>
+    .link-spacing {
+        margin-left: 50px; /* 여백 크기 조절 */
+    }
+</style>

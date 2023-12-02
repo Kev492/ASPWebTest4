@@ -19,6 +19,7 @@ namespace AspWebTest2.Models
         public DbSet<Inquiry> INQUIRY { get; set; }
         public DbSet<FirstFreightShipping> FirstFreightShipping { get; set; }
         public DbSet<SecondFreightShipping> SecondFreightShipping { get; set; }
+        public DbSet<Review> REVIEW { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // 주 키 설정
@@ -31,6 +32,7 @@ namespace AspWebTest2.Models
             modelBuilder.Entity<Inquiry>().HasKey(i => i.InquiryNumber);
             modelBuilder.Entity<FirstFreightShipping>().HasKey(ffs => ffs.TransportNumber);
             modelBuilder.Entity<SecondFreightShipping>().HasKey(sfs => sfs.TransportNumber);
+            modelBuilder.Entity<Review>().HasKey(r => r.ReviewNumber);
 
             base.OnModelCreating(modelBuilder);
         }
